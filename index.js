@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import axios from "axios";
-import { typefDefs } from "./schema/typeDefs.js";
+import { typeDefs } from "./schema/typeDefs.js";
 import { resolvers } from "./schema/resolvers.js";
 
 import dotenv from "dotenv"
@@ -12,5 +12,5 @@ export const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
 export const BASE_URL = 'https://api.themoviedb.org/3'
 
 const server = new ApolloServer({typeDefs, resolvers});
-const { url } = await startStandaloneServer(server, {listen: { port: 4000}});
+const { url } = await startStandaloneServer(server, {listen: { port: 4001}});
 console.log(`Server ready at ${url}`)

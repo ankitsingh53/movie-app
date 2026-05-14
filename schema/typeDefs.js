@@ -7,8 +7,7 @@ export const typeDefs = `
     }
 
     type Query {
-    popularMovies: [Movie!]!
-    
+    popularMovies: [Movie!]!  
     }
 
 `

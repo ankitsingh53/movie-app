@@ -19,6 +19,7 @@ interface MovieData {
   popularMovies: MovieItem[];
 }
 
+
 const Movie = () => {
   const GET_MOVIE_DATA = gql`
     query GetMovieData {
@@ -31,7 +32,6 @@ const Movie = () => {
   `;
 
   const { data, loading, error } = useQuery<MovieData>(GET_MOVIE_DATA);
-
   // console.log(data?.popularMovies)
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
@@ -53,16 +53,17 @@ const Movie = () => {
           spacing={{ xs: 2, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {data?.popularMovies.map((item) => {
+          {data?.popularMovies.map((item:MovieItem) => {
             return (
-              <Grid key={item.id} size={{ xs: 2, sm: 4, md: 4 } }>
-                <Card sx={{ maxWidth: 345, display: "flex" }}>
+              <Grid key={item.id} size={{ xs: 2, sm: 4, md: 4 }  }>
+                <Card sx={{ maxWidth: 345,  display: "flex", margin:"10px" }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="240"
                       image={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
                       alt="green iguana"
+                      sx={{objectFit:"cover"}}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
